@@ -17,7 +17,7 @@ comm==0.2.1
 debugpy==1.8.1
 decorator==5.1.1
 defusedxml==0.7.1
-Django==5.0.2
+Django==3.2.10
 django-postgresql==0.0.3
 django-tinymce==3.7.1
 executing==2.0.1
