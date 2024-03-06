@@ -18,6 +18,8 @@ debugpy==1.8.1
 decorator==5.1.1
 defusedxml==0.7.1
 Django==5.0.2
+django-postgresql==0.0.3
+django-tinymce==3.7.1
 executing==2.0.1
 fastjsonschema==2.19.1
 fqdn==1.5.1
@@ -55,10 +57,12 @@ overrides==7.7.0
 packaging==23.2
 pandocfilters==1.5.1
 parso==0.8.3
+pillow==10.2.0
 platformdirs==4.2.0
 prometheus_client==0.20.0
 prompt-toolkit==3.0.43
 psutil==5.9.8
+psycopg2==2.9.9
 pure-eval==0.2.2
 pycparser==2.21
 Pygments==2.17.2
