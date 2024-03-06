@@ -1,0 +1,224 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script href="{% static 'js/bootstrap.js' %}"></script>
+    <link rel="icon" href="{% static 'images/labify.png' %}" type="image/x-icon">
+    <style>
+        body {
+            background-image: url("{% static 'images/back.png' %}");
+            font-family: Zilla;
+        }
+
+        #b1 {
+            position: absolute;
+            top: 60px;
+            left: 0px;
+            height: 280px;
+            z-index: -1;
+            width: 110px;
+        }
+
+        #b2 {
+            position: absolute;
+            bottom: 70px;
+            left: 0px;
+            height: 270px;
+            width: 200px;
+            z-index: 1;
+
+        }
+
+        #b4 {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            width: 140px;
+            z-index: -1;
+            height: 50px;
+        }
+
+        #b3 {
+            position: absolute;
+            bottom: 50px;
+            right: 0px;
+            z-index: -1;
+            height: 230px;
+            width: 230px;
+        }
+
+        #b5 {
+            position: absolute;
+            top: 320px;
+            right: 15px;
+            width: 130px;
+        }
+
+        .upper {
+            color: wheat;
+            position: absolute;
+            top: 97px;
+            right: 15px;
+        }
+
+        h3 {
+            font-size: 23px;
+        }
+
+        .middle {
+            color: wheat;
+            position: absolute;
+            top: 125px;
+            right: 15px;
+        }
+
+        h1 {
+            font-size: 72px;
+            font-family: Against;
+        }
+
+        .lower1 {
+            color: wheat;
+            position: absolute;
+            top: 202px;
+            right: 25px;
+        }
+
+        h2 {
+            font-size: 40px;
+            font-family: Milestone;
+        }
+
+        .lower2 {
+            color: wheat;
+            position: absolute;
+            top: 236px;
+            right: 25px;
+        }
+
+        .lower3 {
+            color: wheat;
+            position: absolute;
+            top: 270px;
+            right: 25px;
+        }
+
+        @font-face {
+            font-family: Against;
+            src: local('Labify'),
+                url('myapp/static/fonts/against.ttf') format("truetype");
+        }
+
+        @font-face {
+            font-family: Milestone;
+            src: local('Labify'),
+                url('myapp/static/fonts/Milestone.otf') format("opentype");
+        }
+
+        @font-face {
+            font-family: Zilla;
+            src: local('Labify'),
+                url('myapp/static/fonts/ZillaSlab-Light.otf') format("opentype");
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #242424;">
+        <div class="container-fluid">
+            {% url 'Home' as url %}
+            <a class="navbar-brand" href="{{ url }}" id="logo">LABIFY</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+
+                    {% url 'Home' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="home-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-house" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+                            </svg> Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+
+                    {% url 'Lab' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="lab-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-border-inner" viewBox="0 0 16 16">
+                                <path
+                                    d="M.969 0H0v.969h.5V1h.469V.969H1V.5H.969zm.937 1h.938V0h-.938zm1.875 0h.938V0H3.78v1zm1.875 0h.938V0h-.938z" />
+                                <path d="M8.5 7.5H16v1H8.5V16h-1V8.5H0v-1h7.5V0h1z" />
+                                <path
+                                    d="M9.406 1h.938V0h-.938zm1.875 0h.938V0h-.938zm1.875 0h.938V0h-.938zm1.875 0h.469V.969h.5V0h-.969v.5H15v.469h.031zM1 2.844v-.938H0v.938zm14-.938v.938h1v-.938zM1 4.719V3.78H0v.938h1zm14-.938v.938h1V3.78h-1zM1 6.594v-.938H0v.938zm14-.938v.938h1v-.938zM0 9.406v.938h1v-.938zm16 .938v-.938h-1v.938zm-16 .937v.938h1v-.938zm16 .938v-.938h-1v.938zm-16 .937v.938h1v-.938zm16 .938v-.938h-1v.938zM0 16h.969v-.5H1v-.469H.969V15H.5v.031H0zm1.906 0h.938v-1h-.938zm1.875 0h.938v-1H3.78v1zm1.875 0h.938v-1h-.938zm3.75 0h.938v-1h-.938zm1.875 0h.938v-1h-.938zm1.875 0h.938v-1h-.938zm1.875-.5v.5H16v-.969h-.5V15h-.469v.031H15v.469z" />
+                            </svg> Virtual Labs</a>
+                    </li>
+                    {% url 'About' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="about-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-file-earmark-person" viewBox="0 0 16 16">
+                                <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                <path
+                                    d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5z" />
+                            </svg> About Us</a>
+                    </li>
+                    {% url 'Contact' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="contact-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person-rolodex" viewBox="0 0 16 16">
+                                <path d="M8 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                                <path
+                                    d="M1 1a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h.5a.5.5 0 0 0 .5-.5.5.5 0 0 1 1 0 .5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5.5.5 0 0 1 1 0 .5.5 0 0 0 .5.5h.5a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H6.707L6 1.293A1 1 0 0 0 5.293 1zm0 1h4.293L6 2.707A1 1 0 0 0 6.707 3H15v10h-.085a1.5 1.5 0 0 0-2.4-.63C11.885 11.223 10.554 10 8 10c-2.555 0-3.886 1.224-4.514 2.37a1.5 1.5 0 0 0-2.4.63H1z" />
+                            </svg> Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <img id="b1" src="{% static 'images/b1.png' %}" alt="">
+    <img id="b2" src="{% static 'images/b2.png' %}" alt="">
+    <img id="b3" src="{% static 'images/b3.png' %}" alt="">
+    <img id="b4" src="{% static 'images/b4.png' %}" alt="">
+    {% url 'Lab' as url %}
+    <a href="{{ url }}"><img id="b5" src="{% static 'images/arr.png' %}" alt=""></a>
+    <div class="upper">
+        <h3>THE E=MC<sup>2</sup> ENGINEERS</sup></h3>
+    </div>
+    <div class="middle">
+        <h1>LABIFY</h1>
+    </div>
+    <div class="lower1">
+        <h2>SIMULATE.</h2>
+    </div>
+    <div class="lower2">
+        <h2>LEARN.</h2>
+    </div>
+    <div class="lower3">
+        <h2>DO.</h2>
+    </div>
+
+
+
+
+
+</body>
+
+</html>

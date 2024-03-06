@@ -1,0 +1,293 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script href="{% static 'js/bootstrap.js' %}"></script>
+    <link rel="icon" href="{% static 'images/labify.png' %}" type="image/x-icon">
+    <style>
+        body {
+            background-color: #242424;
+            font-family: Zilla;
+        }
+
+        #left {
+            height: 450px;
+            width: 800px;
+            position: absolute;
+            left: 0px;
+            top: 100px;
+            z-index: -1;
+
+
+        }
+
+        #right {
+            height: 300px;
+            width: 500px;
+            position: absolute;
+            right: 20px;
+            bottom: 150px;
+            z-index: -1;
+
+        }
+
+        #half {
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            z-index: -1;
+
+        }
+
+        .right {
+            position: absolute;
+            top: 80px;
+            right: 90px;
+            border-style: none;
+        }
+
+        .main {
+            display: flex;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            margin-top: 70px;
+            margin-left: 20%;
+            gap: 10px;
+        }
+
+        h1 {
+            font-size: 200px;
+            font-family: Against;
+        }
+
+        h2 {
+            font-size: 100px;
+            font-family: Milestone;
+        }
+
+        h3 {
+            font-size: 35px;
+            font-family: Milestone;
+        }
+
+        .third {
+            margin-left: 0%;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 154px;
+            right: 100px;
+        }
+
+        #logo {
+            font-family: Against;
+        }
+
+        @font-face {
+            font-family: Against;
+            src: local('Labify'),
+                url('myapp/static/fonts/against.ttf') format("truetype");
+        }
+
+        @font-face {
+            font-family: Milestone;
+            src: local('Labify'),
+                url('myapp/static/fonts/Milestone.otf') format("opentype");
+        }
+
+        @font-face {
+            font-family: Zilla;
+            src: local('Labify'),
+                url('myapp/static/fonts/ZillaSlab-Light.otf') format("opentype");
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #242424;">
+        <div class="container-fluid">
+            {% url 'Home' as url %}
+            <a class="navbar-brand" href="{{ url }}" id="logo">LABIFY</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+
+                    {% url 'Home' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="home-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-house" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+                            </svg> Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+
+                    {% url 'Lab' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="lab-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-border-inner" viewBox="0 0 16 16">
+                                <path
+                                    d="M.969 0H0v.969h.5V1h.469V.969H1V.5H.969zm.937 1h.938V0h-.938zm1.875 0h.938V0H3.78v1zm1.875 0h.938V0h-.938z" />
+                                <path d="M8.5 7.5H16v1H8.5V16h-1V8.5H0v-1h7.5V0h1z" />
+                                <path
+                                    d="M9.406 1h.938V0h-.938zm1.875 0h.938V0h-.938zm1.875 0h.938V0h-.938zm1.875 0h.469V.969h.5V0h-.969v.5H15v.469h.031zM1 2.844v-.938H0v.938zm14-.938v.938h1v-.938zM1 4.719V3.78H0v.938h1zm14-.938v.938h1V3.78h-1zM1 6.594v-.938H0v.938zm14-.938v.938h1v-.938zM0 9.406v.938h1v-.938zm16 .938v-.938h-1v.938zm-16 .937v.938h1v-.938zm16 .938v-.938h-1v.938zm-16 .937v.938h1v-.938zm16 .938v-.938h-1v.938zM0 16h.969v-.5H1v-.469H.969V15H.5v.031H0zm1.906 0h.938v-1h-.938zm1.875 0h.938v-1H3.78v1zm1.875 0h.938v-1h-.938zm3.75 0h.938v-1h-.938zm1.875 0h.938v-1h-.938zm1.875 0h.938v-1h-.938zm1.875-.5v.5H16v-.969h-.5V15h-.469v.031H15v.469z" />
+                            </svg> Virtual Labs</a>
+                    </li>
+                    {% url 'About' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="about-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-file-earmark-person" viewBox="0 0 16 16">
+                                <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                <path
+                                    d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5z" />
+                            </svg> About Us</a>
+                    </li>
+                    {% url 'Contact' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="contact-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person-rolodex" viewBox="0 0 16 16">
+                                <path d="M8 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                                <path
+                                    d="M1 1a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h.5a.5.5 0 0 0 .5-.5.5.5 0 0 1 1 0 .5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5.5.5 0 0 1 1 0 .5.5 0 0 0 .5.5h.5a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H6.707L6 1.293A1 1 0 0 0 5.293 1zm0 1h4.293L6 2.707A1 1 0 0 0 6.707 3H15v10h-.085a1.5 1.5 0 0 0-2.4-.63C11.885 11.223 10.554 10 8 10c-2.555 0-3.886 1.224-4.514 2.37a1.5 1.5 0 0 0-2.4.63H1z" />
+                            </svg> Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main" style="color: #f5deb3;">
+        <div class="first">
+            <p>
+            <h3>THE E=MC<sup>2</sup> ENGINEERS</h3>
+            </p>
+        </div>
+        <div class="second">
+            <p>
+            <h1>LABIFY</h1>
+            </p>
+        </div>
+        <div class="third">
+            <p>
+            <h2>SIMULATE. LEARN. DO.</h1>
+                </p>
+        </div>
+    </div>
+
+    <div class="right" style="color: wheat;">
+        <pre style="text-align: left;">Experience hands-on learning with 
+Virtual labs tailored to the Indian 
+curriculum.</pre>
+    </div>
+
+    <div class="arrow">
+        {% url 'Lab' as url %}
+        <a href="{{ url }}"><img style="
+            width:180px;  
+            height: auto;" src="{% static 'images/arr.png' %}" alt=""></a>
+    </div>
+
+    <img id="left" src="{% static 'images/left.png' %}" alt="">
+
+    <img id="right" src="{% static 'images/right.png' %}" alt="">
+
+    <img id="half" src="{% static 'images/haf.png' %}" alt="">
+
+    <div class="container" style="position: absolute; bottom: 0px; color: wheat;">
+        <div class="row">
+            <div class="col">
+                <div class="name" style="color: wheat;">
+                    <h4>THE PROJECT NO.07 // 24</h4>
+                    <p>The Anywhere Lab</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="container text-center" style="color: wheat;">
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            Previous
+                        </div>
+                        <div class="col">
+                            <div id="dateParagraph"></div>
+                        </div>
+                        <div class="col">
+                            Next
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div class="col">
+                <div class="learning" style="color: wheat;">
+                    <p>Revolutionizing learning: Virtual labs for physics, expanding to diverse disciplines soon.</p>
+                    <p>Explore Now!</p>
+                    <a href="#" id="home2-link" data-url="{% url 'home2' %}" style="display: none;"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getCurrentDate() {
+            var today = new Date();
+            var day = String(today.getDate()).padStart(2, '0');
+            var month = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+            var year = today.getFullYear();
+
+            return day + '/' + month;
+        }
+        var dateDiv = document.getElementById('dateParagraph');
+
+        // Set its innerHTML to the current date
+        dateDiv.innerHTML = getCurrentDate();
+        var links = document.querySelectorAll('.nav-link');
+        document.addEventListener('DOMContentLoaded', function () {
+            links.forEach(function (link) {
+                link.addEventListener('click', function () {
+                    links.forEach(function (otherLink) {
+                        otherLink.classList.remove('active');
+                    });
+                    this.classList.add(' active');
+                });
+            });
+        });
+        var home2Url = document.getElementById('home2-link').getAttribute('data-url');
+        function redirectToHome2IfNeeded() {
+            if (window.innerWidth < 450) {
+                window.location.href = home2Url;
+            }
+        }
+    
+        // Call the function when the DOM content is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            redirectToHome2IfNeeded();
+        });
+    
+        // Listen for window resize event to continuously check and redirect if needed
+        window.addEventListener('resize', function () {
+            redirectToHome2IfNeeded();
+        });
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,399 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLab</title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script href="{% static 'js/bootstrap.js' %}"></script>
+    <link rel="icon" href="{% static 'images/labify.png' %}" type="image/x-icon">
+
+    <style>
+        body {
+            background-color: #242424;
+            color: #f5deb3;
+            font-family: Zilla;
+        }
+
+        #logo {
+            font-family: Against;
+        }
+
+        h1 {
+            font-family: Against;
+        }
+
+        h5 {
+            font-family: Milestone;
+            font-size: 35px;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        img {
+            height: 400px;
+            width: 1600px;
+        }
+
+        .row {
+            margin-left: 10%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .comment {
+            width: 40%;
+            height: 100px;
+            padding: 10px;
+            background-color: #d0e2bc;
+        }
+
+        .feedback {
+            margin-left: 10%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-family: inherit;
+            font-size: 20px;
+            background: #d0e2bc;
+            color: #242424;
+            padding: 0.7em 1em;
+            padding-left: 0.9em;
+            display: flex;
+            align-items: center;
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        button span {
+            display: block;
+            margin-left: 0.3em;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button svg {
+            display: block;
+            transform-origin: center center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        button:hover .svg-wrapper {
+            animation: fly-1 0.6s ease-in-out infinite alternate;
+        }
+
+        button:hover svg {
+            transform: translateX(1.2em) rotate(45deg) scale(1.1);
+        }
+
+        button:hover span {
+            transform: translateX(5em);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .date {
+            font-size: 11px;
+        }
+
+        .comment-text {
+            font-size: 12px;
+        }
+
+        .fs-12 {
+            font-size: 12px;
+        }
+
+        .shadow-none {
+            box-shadow: none;
+        }
+
+        .name {
+            color: #d0e2bc;
+        }
+
+        .cursor:hover {
+            color: wheat;
+        }
+
+        .cursor {
+            cursor: pointer;
+        }
+
+        .textarea {
+            resize: none;
+        }
+
+        .bg-white {
+            background-color: #2D2D2D !important;
+            /* Light blue background color */
+        }
+
+        h4 {
+            font-family: Milestone;
+        }
+
+        label {
+            display: block;
+            /* Ensure labels are displayed as blocks */
+            width: 100px;
+            /* Adjust the width of the labels as needed */
+            text-align: right;
+            /* Align the text of labels to the right */
+            margin-bottom: 10px;
+            /* Add some margin below labels */
+            color: #f5deb3;
+            /* Text color */
+            float: left;
+            /* Float labels to the left */
+            margin-right: 10px;
+            /* Add margin to the right of labels */
+        }
+
+        input[type="text"],
+        textarea {
+            background-color: #d0e2bc;
+            /* Set the background color of input and textarea fields */
+            border: none;
+            /* Remove borders */
+            padding: 5px;
+            /* Add some padding */
+            width: calc(100% - 110px);
+            /* Calculate the width of the input fields */
+            box-sizing: border-box;
+            /* Include padding and border in the width calculation */
+            color: #242424;
+            /* Text color */
+            float: left;
+            /* Float input fields to the left */
+            margin-bottom: 10px;
+            /* Add some margin below input fields */
+        }
+
+        @keyframes fly-1 {
+            from {
+                transform: translateY(0.1em);
+            }
+
+            to {
+                transform: translateY(-0.1em);
+            }
+        }
+
+        @font-face {
+            font-family: Against;
+            src: local('Labify'),
+            url("{% static 'fonts/against.ttf' %}") format("truetype");
+        }
+
+        @font-face {
+            font-family: Milestone;
+            src: local('Labify'),
+            url("{% static 'fonts/Milestone.otf' %}") format("opentype");
+        }
+
+        @font-face {
+            font-family: Zilla;
+            src: local('Labify'),
+            url("{% static 'fonts/ZillaSlab-Light.otf' %}") format("opentype");
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #242424;">
+        <div class="container-fluid">
+            {% url 'Home' as url %}
+            <a class="navbar-brand" href="{{ url }}" id="logo">LABIFY</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+
+                    {% url 'Home' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="home-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-house" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+                            </svg> Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+
+                    {% url 'Lab' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="lab-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-border-inner" viewBox="0 0 16 16">
+                                <path
+                                    d="M.969 0H0v.969h.5V1h.469V.969H1V.5H.969zm.937 1h.938V0h-.938zm1.875 0h.938V0H3.78v1zm1.875 0h.938V0h-.938z" />
+                                <path d="M8.5 7.5H16v1H8.5V16h-1V8.5H0v-1h7.5V0h1z" />
+                                <path
+                                    d="M9.406 1h.938V0h-.938zm1.875 0h.938V0h-.938zm1.875 0h.938V0h-.938zm1.875 0h.469V.969h.5V0h-.969v.5H15v.469h.031zM1 2.844v-.938H0v.938zm14-.938v.938h1v-.938zM1 4.719V3.78H0v.938h1zm14-.938v.938h1V3.78h-1zM1 6.594v-.938H0v.938zm14-.938v.938h1v-.938zM0 9.406v.938h1v-.938zm16 .938v-.938h-1v.938zm-16 .937v.938h1v-.938zm16 .938v-.938h-1v.938zm-16 .937v.938h1v-.938zm16 .938v-.938h-1v.938zM0 16h.969v-.5H1v-.469H.969V15H.5v.031H0zm1.906 0h.938v-1h-.938zm1.875 0h.938v-1H3.78v1zm1.875 0h.938v-1h-.938zm3.75 0h.938v-1h-.938zm1.875 0h.938v-1h-.938zm1.875 0h.938v-1h-.938zm1.875-.5v.5H16v-.969h-.5V15h-.469v.031H15v.469z" />
+                            </svg> Virtual Labs</a>
+                    </li>
+                    {% url 'About' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="about-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-file-earmark-person" viewBox="0 0 16 16">
+                                <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                <path
+                                    d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5z" />
+                            </svg> About Us</a>
+                    </li>
+                    {% url 'Contact' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="contact-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person-rolodex" viewBox="0 0 16 16">
+                                <path d="M8 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                                <path
+                                    d="M1 1a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h.5a.5.5 0 0 0 .5-.5.5.5 0 0 1 1 0 .5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5.5.5 0 0 1 1 0 .5.5 0 0 0 .5.5h.5a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H6.707L6 1.293A1 1 0 0 0 5.293 1zm0 1h4.293L6 2.707A1 1 0 0 0 6.707 3H15v10h-.085a1.5 1.5 0 0 0-2.4-.63C11.885 11.223 10.554 10 8 10c-2.555 0-3.886 1.224-4.514 2.37a1.5 1.5 0 0 0-2.4.63H1z" />
+                            </svg> Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="d-flex justify-content-center" style="justify-content: center;background-color:wheat">
+                <a href="{{ post.link }}"><img src="{{ post.image.url }}" class="card-img-top" alt="..."></a>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <div class="heading" style="text-align: center; color:wheat;">
+            <h1>{{ post.lab }}</h1>
+        </div>
+        <br>
+
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <p style="text-align: center; color:wheat;font-size: 20px;">{{ post.desc|safe }}</p>
+        </div>
+        <hr>
+
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h5 style="text-align: center; color:wheat;">{{ post.lab }} Procedure</h5>
+            <p style="text-align: center; color:wheat;">{{ post.proc|safe }}</p>
+        </div>
+        <hr>
+        <h4>Feedbacks</h4>
+        <div class="feedback" id="feedback-list ul">
+            {% for feedback in feedbacks %}
+            <div class="container mt-2">
+                <div class="d-flex row">
+                    <div class="col-md-8">
+                        <div class="d-flex flex-column comment-section">
+                            <div class="bg-white p-2">
+                                <div class="d-flex flex-row user-info">
+                                    <div class="d-flex flex-column justify-content-start ml-2">
+                                        <span class="d-block font-weight-bold name">{{ feedback.user }}</span>
+                                        <span class="date text-white-50">{{ feedback.time }}</span>
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <p class="comment-text">{{ feedback.text }}</p>
+                                </div>
+                                {% if request.user.is_superuser %}
+                                <a href="{% url 'delete' pk=feedback.pk %}">Delete</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <br>
+        <div class="container mt-2">
+            <p>You can submit your Feedback. Your Feedback is valuable to us.</p>
+            <form id="feedback-form" method="post">
+                {% csrf_token %}
+                <div>
+                    <label for="user">User: </label>
+                    <input type="text" id="user" name="user" placeholder="Enter your Name">
+                </div>
+                <br>
+                <div>
+                    <label for="text">Text: </label>
+                    <input type="text" id="text" name="text" placeholder="Enter your Feedback.">
+                </div>
+                <button type="submit">
+                    <div class="svg-wrapper-1">
+                        <div class="svg-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path fill="currentColor"
+                                    d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                    <span>Send</span>
+                </button>
+
+            </form>
+        </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#feedback-form').submit(function (e) {
+                e.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: window.location.href,
+                    data: formData,
+                    success: function (data) {
+                        // Construct the HTML for the new comment
+                        var newCommentHtml = '<div class="container mt-5"><div class="d-flex row"><div class="col-md-8"><div class="d-flex flex-column comment-section"><div class="bg-white p-2"><div class="d-flex flex-row user-info"><div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">' + data.user + '</span><span class="date text-black-50">' + data.time + '</span></div></div><div class="mt-2"><p class="comment-text">' + data.text + '</p></div>';
+                        // Append the "Delete" link to the new comment HTML
+                        // Modify the URL as needed, assuming the URL pattern is correct
+                        if (data.delete_url) {
+                            newCommentHtml += '<a href="' + data.delete_url + '">Delete</a>';
+                        }
+                        // Close the HTML tags for the new comment
+                        newCommentHtml += '</div></div></div></div>';
+                        // Append the new comment HTML to the feedback list
+                        $('#feedback-list').append(newCommentHtml);
+                        // Reset the form
+                        $('#feedback-form')[0].reset();
+                        location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                        alert('Error occurred while submitting feedback: ' + error);
+                    }
+                });
+            });
+        });
+        
+    </script>
+
+</body>
+
+</html>

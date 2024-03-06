@@ -1,0 +1,313 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script href="{% static 'js/bootstrap.js' %}"></script>
+    <link rel="icon" href="{% static 'images/labify.png' %}" type="image/x-icon">
+
+    <style>
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        body {
+            color: wheat;
+            background-color: #242424;
+            font-family: Zilla;
+        }
+
+        input {
+            width: 272px;
+        }
+
+        #s:hover {
+            color: #ECE3CE;
+            background-color: #4F6F52;
+        }
+
+        h1 {
+            margin: 0px 0px 10px 0px;
+            text-align: center;
+            font-family: Against;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #email{
+            color: wheat;
+        }
+
+        #email:hover {
+            color: whitesmoke;
+            font-weight: bold;
+            font-size: 20px;
+
+        }
+
+        .github {
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+        }
+
+        .chat {
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+        }
+
+        .touch {
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+        }
+
+        @font-face {
+            font-family: Against;
+            src: local('Labify'),
+            url("{% static 'fonts/against.ttf' %}") format("truetype");
+        }
+
+        @font-face {
+            font-family: Milestone;
+            src: local('Labify'),
+            url("{% static 'fonts/Milestone.otf' %}") format("opentype");
+        }
+
+        @font-face {
+            font-family: Zilla;
+            src: local('Labify'),
+            url("{% static 'fonts/ZillaSlab-Light.otf' %}") format("opentype");
+        }
+
+        .button1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 15px;
+            gap: 15px;
+            background-color: #242424;
+            outline: 3px #181717 solid;
+            outline-offset: -3px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: 400ms;
+        }
+
+        .button1 .text {
+            color: white;
+            font-weight: 700;
+            font-size: 1em;
+            transition: 400ms;
+        }
+
+        .button1 svg path {
+            transition: 400ms;
+        }
+
+        .button1:hover {
+            background-color: transparent;
+        }
+
+        .button1:hover .text {
+            color: #181717;
+        }
+
+        .button1:hover svg path {
+            fill: #181717;
+        }
+
+
+        .button3 {
+            background-color: #242424;
+            border: 1px solid #0077b5;
+            padding: 5px;
+            position: relative;
+            width: 7.2em;
+            height: 2em;
+            transition: 0.5s;
+            font-size: 17px;
+            border-radius: 0.4em;
+        }
+
+        .button3 p {
+            position: absolute;
+            top: 0.4em;
+            left: 1.2em;
+            margin: 0;
+            padding: 0;
+            transition: .5s;
+            color: #0077b5;
+        }
+
+        .button3 svg {
+            position: absolute;
+            top: 0.45em;
+            right: 0.5em;
+            margin: 0;
+            padding: 0;
+            opacity: 0;
+            transition: 0.5s;
+            height: 1em;
+            fill: #fff
+        }
+
+        .button3:hover p {
+            left: 0.6em;
+            color: #fff
+        }
+
+        .button3:hover svg {
+            opacity: 1;
+        }
+
+        .button3:hover {
+            background-color: #0077b5;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #242424;">
+        <div class="container-fluid">
+            {% url 'Home' as url %}
+            <a class="navbar-brand" href="{{ url }}" id="logo">LABIFY</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+
+                    {% url 'Home' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="home-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-house" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+                            </svg> Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+
+                    {% url 'Lab' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="lab-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-border-inner" viewBox="0 0 16 16">
+                                <path
+                                    d="M.969 0H0v.969h.5V1h.469V.969H1V.5H.969zm.937 1h.938V0h-.938zm1.875 0h.938V0H3.78v1zm1.875 0h.938V0h-.938z" />
+                                <path d="M8.5 7.5H16v1H8.5V16h-1V8.5H0v-1h7.5V0h1z" />
+                                <path
+                                    d="M9.406 1h.938V0h-.938zm1.875 0h.938V0h-.938zm1.875 0h.938V0h-.938zm1.875 0h.469V.969h.5V0h-.969v.5H15v.469h.031zM1 2.844v-.938H0v.938zm14-.938v.938h1v-.938zM1 4.719V3.78H0v.938h1zm14-.938v.938h1V3.78h-1zM1 6.594v-.938H0v.938zm14-.938v.938h1v-.938zM0 9.406v.938h1v-.938zm16 .938v-.938h-1v.938zm-16 .937v.938h1v-.938zm16 .938v-.938h-1v.938zm-16 .937v.938h1v-.938zm16 .938v-.938h-1v.938zM0 16h.969v-.5H1v-.469H.969V15H.5v.031H0zm1.906 0h.938v-1h-.938zm1.875 0h.938v-1H3.78v1zm1.875 0h.938v-1h-.938zm3.75 0h.938v-1h-.938zm1.875 0h.938v-1h-.938zm1.875 0h.938v-1h-.938zm1.875-.5v.5H16v-.969h-.5V15h-.469v.031H15v.469z" />
+                            </svg> Virtual Labs</a>
+                    </li>
+                    {% url 'About' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="about-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-file-earmark-person" viewBox="0 0 16 16">
+                                <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                <path
+                                    d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5z" />
+                            </svg> About Us</a>
+                    </li>
+                    {% url 'Contact' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}"
+                            id="contact-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person-rolodex" viewBox="0 0 16 16">
+                                <path d="M8 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                                <path
+                                    d="M1 1a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h.5a.5.5 0 0 0 .5-.5.5.5 0 0 1 1 0 .5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5.5.5 0 0 1 1 0 .5.5 0 0 0 .5.5h.5a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H6.707L6 1.293A1 1 0 0 0 5.293 1zm0 1h4.293L6 2.707A1 1 0 0 0 6.707 3H15v10h-.085a1.5 1.5 0 0 0-2.4-.63C11.885 11.223 10.554 10 8 10c-2.555 0-3.886 1.224-4.514 2.37a1.5 1.5 0 0 0-2.4.63H1z" />
+                            </svg> Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header" style="text-align: center; margin: 20px;">
+        <h1>Contact us</h1>
+    </div>
+
+
+    <div class="d-flex-justify-content-center">
+        <div class="p-2" style="display: flex; justify-content: center;">
+            <div class="touch" style="background-color: #2d2d2d; margin-bottom: 30px;text-align: center;">
+                <h3>Get in Touch</h3>
+                <p>We love to hear from you. We are always here to contact with you.</p>
+                <button class="button3">
+                    <a href="https://www.linkedin.com/in/saksham-sharma-614196275/"><p>Saksham</p></a>
+                    <svg viewBox="0 0 16 16" class="bi bi-whatsapp" fill="currentColor" height="16" width="16"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z">
+                        </path>
+                    </svg>
+                </button>
+
+                <button class="button3">
+                    <a href="https://www.linkedin.com/in/sidhaarth-s-27737524b/"><p>Sidhaarth</p></a>
+                    <svg viewBox="0 0 16 16" class="bi bi-whatsapp" fill="currentColor" height="16" width="16"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+
+        <div class="p-2" style="display: flex; justify-content: center;">
+            <div class="chat" style="background-color: #2d2d2d; margin-bottom: 30px; text-align: center;">
+                <h3>Chat with us</h3>
+                <p>We are here to help.</p>
+                <p><a id="email" href="https://mail.google.com/mail/?view=cm&fs=1&to=sidhaarthshree@gmail.com">sidhaarthshree@gmail.com</a></p>
+            </div>
+        </div>
+
+
+        <div class="p-2" style="display: flex; justify-content: center;">
+            <div class="github" style="background-color: #2d2d2d; margin-bottom: 30px; text-align: center;">
+                <h3>Connect with us</h3>
+                <p>You can also connect with us through github.</p>
+                <button class="button1" style="display: inline;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 0.296997C5.37 0.296997 0 5.67 0 12.297C0 17.6 3.438 22.097 8.205 23.682C8.805 23.795 9.025 23.424 9.025 23.105C9.025 22.82 9.015 22.065 9.01 21.065C5.672 21.789 4.968 19.455 4.968 19.455C4.422 18.07 3.633 17.7 3.633 17.7C2.546 16.956 3.717 16.971 3.717 16.971C4.922 17.055 5.555 18.207 5.555 18.207C6.625 20.042 8.364 19.512 9.05 19.205C9.158 18.429 9.467 17.9 9.81 17.6C7.145 17.3 4.344 16.268 4.344 11.67C4.344 10.36 4.809 9.29 5.579 8.45C5.444 8.147 5.039 6.927 5.684 5.274C5.684 5.274 6.689 4.952 8.984 6.504C9.944 6.237 10.964 6.105 11.984 6.099C13.004 6.105 14.024 6.237 14.984 6.504C17.264 4.952 18.269 5.274 18.269 5.274C18.914 6.927 18.509 8.147 18.389 8.45C19.154 9.29 19.619 10.36 19.619 11.67C19.619 16.28 16.814 17.295 14.144 17.59C14.564 17.95 14.954 18.686 14.954 19.81C14.954 21.416 14.939 22.706 14.939 23.096C14.939 23.411 15.149 23.786 15.764 23.666C20.565 22.092 24 17.592 24 12.297C24 5.67 18.627 0.296997 12 0.296997Z"
+                            fill="white"></path>
+                    </svg>
+                    <a style="text-decoration: none;" href="https://github.com/sakshamsharma121"><p class="text">Saksham</p></a>
+                </button>
+
+                <button class="button1" style="display: inline;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 0.296997C5.37 0.296997 0 5.67 0 12.297C0 17.6 3.438 22.097 8.205 23.682C8.805 23.795 9.025 23.424 9.025 23.105C9.025 22.82 9.015 22.065 9.01 21.065C5.672 21.789 4.968 19.455 4.968 19.455C4.422 18.07 3.633 17.7 3.633 17.7C2.546 16.956 3.717 16.971 3.717 16.971C4.922 17.055 5.555 18.207 5.555 18.207C6.625 20.042 8.364 19.512 9.05 19.205C9.158 18.429 9.467 17.9 9.81 17.6C7.145 17.3 4.344 16.268 4.344 11.67C4.344 10.36 4.809 9.29 5.579 8.45C5.444 8.147 5.039 6.927 5.684 5.274C5.684 5.274 6.689 4.952 8.984 6.504C9.944 6.237 10.964 6.105 11.984 6.099C13.004 6.105 14.024 6.237 14.984 6.504C17.264 4.952 18.269 5.274 18.269 5.274C18.914 6.927 18.509 8.147 18.389 8.45C19.154 9.29 19.619 10.36 19.619 11.67C19.619 16.28 16.814 17.295 14.144 17.59C14.564 17.95 14.954 18.686 14.954 19.81C14.954 21.416 14.939 22.706 14.939 23.096C14.939 23.411 15.149 23.786 15.764 23.666C20.565 22.092 24 17.592 24 12.297C24 5.67 18.627 0.296997 12 0.296997Z"
+                            fill="white"></path>
+                    </svg>
+                    <a style="text-decoration: none;" href="https://github.com/SidhaarthShree07"><p class="text">Sidhaarth</p></a>
+                </button>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
