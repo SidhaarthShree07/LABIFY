@@ -5,7 +5,7 @@ from tinymce import models as tinymce_models
 class Post(models.Model):  
     title = models.CharField(max_length=80)
     lab = models.CharField(max_length=80)
-    image = models.ImageField(upload_to='images/', default='images/default.png')
+    image = models.TextField()
     link = models.CharField(max_length=80)
     desc = models.TextField()
     proc = tinymce_models.HTMLField()
