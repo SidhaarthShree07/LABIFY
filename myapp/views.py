@@ -17,7 +17,7 @@ def Lab(request):
     return render(request,"Lab.html",{'posts': posts})
 
 def Contact(request):
-    return render(request, "Contact.html")
+    return render(request, "contact.html")
 
 def About(request):
     return render(request, "about.html")
