@@ -21,6 +21,7 @@
         body {
             background-color: #242424;
             color: wheat;
+            font-family: Zilla;
         }
 
         img {
@@ -41,8 +42,10 @@
             font-size: 25px;
         }
 
-
-
+        #logo {
+            font-family: Against;
+        }
+        
         .card:hover {
             border-radius: 5px;
             box-shadow: rgba(245, 222, 179, 0.8) 0 0 15px 10px;
@@ -51,6 +54,23 @@
         .list-group-item {
             background-color: #2d2d2d;
             color: wheat;
+        }
+        @font-face {
+            font-family: Against;
+            src: local('Labify'),
+                url('myapp/static/fonts/against.ttf') format("truetype");
+        }
+
+        @font-face {
+            font-family: Milestone;
+            src: local('Labify'),
+                url('myapp/static/fonts/Milestone.otf') format("opentype");
+        }
+
+        @font-face {
+            font-family: Zilla;
+            src: local('Labify'),
+                url('myapp/static/fonts/ZillaSlab.otf') format("opentype");
         }
     </style>
 </head>
