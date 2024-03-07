@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'Labify.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': '151Gg3cFGa5f3fcBc*E5a213f4G6B22b',
-        'HOST': 'monorail.proxy.rlwy.net',
-        'PORT': '39689',
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': 'tWk48rUmqZFn',
+        'HOST': 'ep-rough-breeze-a17f9gwm-pooler.ap-southeast-1.aws.neon.tech',
+        'PORT': '5432',
     }
 }
 
